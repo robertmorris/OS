@@ -13,7 +13,7 @@ public class PCB {
     private static int sharedUniqueId = 0;
     private int uniqueId;
     //private enum processState {newCPU, running, ready, waiting, terminated }
-    private String processState;
+    //private String processState;
     private int priority;
     private int processSize;
     
@@ -21,6 +21,26 @@ public class PCB {
     public int getUniqueId()
     {
         return uniqueId;
+    }
+    public void setUniqueId(int value)
+    {
+        uniqueId = value;
+    }
+    public int getPriority()
+    {
+     return priority;   
+    }
+    public void setPriority(int value)
+    {
+        priority = value;
+    }
+    public int getProcessSize()
+    {
+        return processSize;
+    }
+    public void setProcessSize(int value)
+    {
+        processSize = value;
     }
     
     

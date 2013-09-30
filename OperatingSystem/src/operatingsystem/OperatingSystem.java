@@ -45,6 +45,8 @@ public class OperatingSystem {
             
             if(read.startsWith("//")){
                 String[] tokens = read.split(" ");
+                PCB pc = new PCB();
+                
             }
 //            PCB pc = new PCB();
 //            
