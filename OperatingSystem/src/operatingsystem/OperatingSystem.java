@@ -21,21 +21,17 @@ public class OperatingSystem {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Loader();
-        while(true)
-        {
-//            Scheduler();
-//            Dispatcher();
-//            WaitForInterrupt();
-        }
+     
     }
-
+    
+/*
     private static void Loader() {
         
         try
         {
         BufferedReader in = new BufferedReader(new FileReader("DataFile.txt"));
         String read = null;
+        //String beginJob = "// JOB";
         String endJob = "// END";
         ArrayList<PCB> pcb = new ArrayList<PCB>();
         
@@ -43,7 +39,7 @@ public class OperatingSystem {
         while((read = in.readLine()) != null)
         {
             
-            if(read.startsWith("//")){
+            if(read.startsWith("// JOB")){
                 String[] tokens = read.split(" ");
                 PCB pc = new PCB();
                 
@@ -75,6 +71,7 @@ public class OperatingSystem {
         }
             
     }
+    */
 }
 
 
