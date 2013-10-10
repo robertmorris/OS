@@ -21,7 +21,8 @@ public class OperatingSystem {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-     
+     Loader loader = new Loader();
+     loader.BeginLoad();
     }
     
 /*
