@@ -36,10 +36,14 @@ public class Loader {
 
             //NOT sure about this one.  Still workign out best way to parse
             while ((read = in.readLine()) != null) {
+                
+                
 
+                /*
                 if (read.startsWith("// JOB")) {
                     String[] tokens = read.split(" ");
                 }
+                */
 
             }
         } catch (IOException e) {

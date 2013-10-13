@@ -6,10 +6,7 @@ package operatingsystem;
 
 import java.util.HashMap;
 
-/**
- *
- * @author scoobydoo
- */
+
 public class Memory {
 
     private String[] Ram;	//simulated ram space
@@ -62,7 +59,7 @@ public class Memory {
         boolean value = false;
         for (int i = 0; i < ProcessData.size(); i++) {
             if (!ProcessData.isEmpty()) {
-                ProcessData.put(sizes,data);
+                ProcessData.put(size,data);
                 value = true;
             }
         }
