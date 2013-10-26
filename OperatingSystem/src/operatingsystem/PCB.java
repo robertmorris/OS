@@ -4,131 +4,59 @@
  */
 package operatingsystem;
 
+import java.util.Stack;
+
 /**
  *
  * @author robert
  */
 public class PCB
 {
-	private int processID; //the process's job number
-	private int priority; //process priority on a scale of 1-5 (1 being the Highest)
-	private int numOfCycles; // job cycle iteration
-	private int process_start; //begining memory location of process
-	private int process_end; // ending location of process
-	private int data_start; //starting location of process data
-	private int data_end; //ending location of process data
-	private int size; //process size
-	private String change_status;		// process status info [running, ready, waiting, new]
+		//stacks of processes
+    private static Stack<PCB_template> jobQueue;
+    private PCB_template pcb;
+    private static int count;
+    
+    //constructor
+    public PCB() {
+        count = 0;
+        jobQueue = new Stack<PCB_template>();
+    }
+    
+    //creates and pcb_template object & add to the job queue, once buffer information is added
+    public void createJob(int id, int size, int priority, int address) {
+        pcb = new PCB_template(id, size, priority, address);
+    }
+    
+    public void addBuffferInfo(int iBufferSize, int oBufferSize, int tBufferSize) {
+        pcb.addMetaData(iBufferSize, oBufferSize, tBufferSize);
+        jobQueue.add(pcb);
+        count++;
+    }
+    
+    public void setDataSize(int dataSize) {
+        pcb.setDataSize(dataSize);
+    }
+    
+    public int getCount() {
+        return count;
+    }
+    
+    public PCB_template getJob(int i) {
+        return jobQueue.get(i);
+    }
+    
+   // Remove a job from the job queue
+    public void removeJob(int i) {
+        jobQueue.remove(i);
+    }
 
-//default constructor	
-public PCB()
-{
- 	processID = 0;
-	priority = 0;
-	numOfCycles = 0;
-	size = 0;
-	process_start = 0;
-	process_end = 0;
-	data_start = 0;
-	data_end = 0;
-	change_status = "";
-}
-	
-public void setProcessID(int pid)
-{
-	processID = pid;
-}
-public int getProcessID()
-{
-	return processID;
-}
-public void setPriority(int pr)
-{
-	priority = pr;
-}
-public int getPriority()
-{
-	return priority;
-}
-public void setNumOfCycles(int noc)
-{
-	numOfCycles = noc;
-}
-public int getNumOfCycles()
-{
-	return numOfCycles;
-}
-public void setSize (int s)
-{
-	size = s;
-}
-public int getSize()
-{
-	return size;
-}
-public void setProcessStart(int ps)
-{
-	process_start = ps;
-}
-public int getProcessStart()
-{
-	return process_start;
-}
-public void setProcessEnd(int pe)
-{
-	process_end = pe;
-}
-public int getProcessEnd()
-{
-	return process_end;
-}
-public void setDataStart(int ds)
-{
-	data_start = ds;
-}
-public int getDataStart()
-{
-	return data_start;
-}
-public void setDataEnd(int de)
-{
-	data_end = de;
-}
-public int getDataEnd()
-{
-	return data_end;
-}
+    public void printPCB() {
 
-public String getChangeStatus()
-{
-	return change_status;
-}
-public void setChangeStatus(String status)
-{
-	this.change_status = status;
-}
-
-public void incrementNumOfCycle()
-{
-	numOfCycles++;
-}
-
-public void changeStatus(String newState)
-{
-	newState= newState.toLowerCase();
-	if(newState.equals("running"))
-		change_status = newState;
-	else if (newState.equals("ready"))
-		change_status = newState;
-	else if (newState.equals("waiting"))
-		change_status = newState;
-	else if (newState.equals("exited"))
-		change_status = newState;
-	else
-		System.out.println("ERROR: "+newState+" is not a valid state");
-}
-public String toString()
-{
-	return "process ID: "+processID+"\n priority:"+priority +"\nnumOfcycles:"+numOfCycles+"\nSize:"+size+"\nprocessStart:"+process_start+"\nprocessEnd"+process_end+"\ndata start:"+data_start+"\n data_end:"+data_end+"\nchange status: "+change_status ;
-}
+        //System.out.println(jobQueue.toString());
+        for (PCB_template v : jobQueue) {
+            System.out.println("JobID: " + v.getID() + "\tJobPriority: " +
+                    v.getPriority() + "\tJobSize: " + v.getSize());
+        }
+    }
 }

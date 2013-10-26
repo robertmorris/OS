@@ -1,4 +1,4 @@
-package com.mariax22.JavaOs;
+package operatingsystem;
 
 public class DiskMemory {
 	

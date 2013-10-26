@@ -1,8 +1,8 @@
-package com.mariax22.JavaOs;
+package operatingsystem;
 
 public class MemoryManager {
 	
-	public DiskMemory disk;
+    public DiskMemory disk;
     private RamMemory ram;
 
 
@@ -13,8 +13,8 @@ public class MemoryManager {
     **************************************************************/
     
     public MemoryManager() {
-        disk = new DiskMemory(2048);
-        ram = new RamMemory(1024);
+        disk = new DiskMemory(4096);
+        ram = new RamMemory(2048);
     }
 
     //writes the given data to the disk starting at the location provided.  

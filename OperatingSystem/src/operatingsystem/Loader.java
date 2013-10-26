@@ -11,17 +11,34 @@ import java.util.ArrayList;
 
 public class Loader {
 
-    private Memory mem;
+    private MemoryManager mem;
     private PCB pc;
     private BufferedReader in;
+    String[] token;
     private String read;
-    private int length;
+    private int count;
+    private int size;
+    private int jobId;
+    private int priority;
+    private int address;
+    private int inputBuffersize;
+    private int outputBuffersize;
+    private int tempBuffersize;
 
     public Loader() {
-        mem = new Memory();
+        mem = new MemoryManager();
         pc = new PCB();
-        length = 0;
+        jobId = 0;
+        size = 0;
+        priority = 0;
+        address = 0;
         read = "";
+        token = new String[1024];
+        inputBuffersize = 0;
+        outputBuffersize = 0;
+        tempBuffersize = 0;
+        count = 0;
+   
     }
 
     public boolean BeginLoad() {
@@ -29,21 +46,36 @@ public class Loader {
         try {
             
             in = new BufferedReader(new FileReader("DataFile.txt"));
-            length = mem.get_diskLength();
-            //String beginJob = "// JOB";
-            //String endJob = "// END";
-            //ArrayList<PCB> pcb = new ArrayList<PCB>();
 
-            //NOT sure about this one.  Still workign out best way to parse
             while ((read = in.readLine()) != null) {
                 
-                
+                    if (read.startsWith("// JOB")) {
 
-                /*
-                if (read.startsWith("// JOB")) {
-                    String[] tokens = read.split(" ");
+                    token = read.split(" ");
+                    jobId = Integer.parseInt(token[2], 16);
+                    size = Integer.parseInt(token[3], 16);
+                    priority = Integer.parseInt(token[4], 16);
+                    pc.createJob(jobId,size,priority,count);
+
+                    
                 }
-                */
+
+                
+                if(read.startsWith("// Data")){
+                    
+                    token = read.split(" ");
+                    inputBuffersize = Integer.parseInt(token[2], 16);
+                    outputBuffersize = Integer.parseInt(token[3], 16);
+                    tempBuffersize = Integer.parseInt(token[4], 16);
+                    pc.addBuffferInfo(inputBuffersize, outputBuffersize, tempBuffersize);
+    
+                }
+                
+                                
+                mem.writeDiskData(count, read);
+                
+                count++;
+                    
 
             }
         } catch (IOException e) {

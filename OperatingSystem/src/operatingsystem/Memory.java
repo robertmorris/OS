@@ -7,6 +7,13 @@ package operatingsystem;
 import java.util.HashMap;
 
 
+/**
+ *
+ * @author scoobydoo
+ */
+
+
+
 public class Memory {
 
     private String[] Ram;	//simulated ram space
