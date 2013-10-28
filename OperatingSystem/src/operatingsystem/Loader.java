@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package operatingsystem;
 
 import java.io.BufferedReader;
@@ -14,7 +11,7 @@ public class Loader {
     private MemoryManager mem;
     private PCB pc;
     private BufferedReader in;
-    String[] token;
+    private String[] token;
     private String read;
     private int count;
     private int size;
@@ -24,6 +21,14 @@ public class Loader {
     private int inputBuffersize;
     private int outputBuffersize;
     private int tempBuffersize;
+    
+    public MemoryManager getMemory(){
+        return this.mem;
+    }
+    
+    public PCB getPCB(){
+        return this.pc;
+    }
 
     public Loader() {
         mem = new MemoryManager();
@@ -90,4 +95,7 @@ public class Loader {
 
         return true;
     }
-}
+
+    
+        }
+   

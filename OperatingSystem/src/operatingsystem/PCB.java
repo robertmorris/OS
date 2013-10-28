@@ -1,18 +1,11 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package operatingsystem;
 
 import java.util.Stack;
 
-/**
- *
- * @author robert
- */
 public class PCB
 {
-		//stacks of processes
+    //stacks of processes
     private static Stack<PCB_template> jobQueue;
     private PCB_template pcb;
     private static int count;
