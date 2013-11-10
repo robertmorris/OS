@@ -61,7 +61,8 @@ public class Loader {
                     size = Integer.parseInt(token[3], 16);
                     priority = Integer.parseInt(token[4], 16);
                     pc.createJob(jobId,size,priority,count);
-
+                    
+                    read = in.readLine();
                     
                 }
 
@@ -73,7 +74,8 @@ public class Loader {
                     outputBuffersize = Integer.parseInt(token[3], 16);
                     tempBuffersize = Integer.parseInt(token[4], 16);
                     pc.addBuffferInfo(inputBuffersize, outputBuffersize, tempBuffersize);
-    
+                    
+                    read = in.readLine();
                 }
                 
                                 

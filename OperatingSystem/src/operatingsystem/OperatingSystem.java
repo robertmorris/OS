@@ -15,16 +15,13 @@ import java.util.regex.Pattern;
 public class OperatingSystem {
     
     public static void main(String[] args) {
-      
-     MemoryManager memory = new MemoryManager();
-     PCB processBlock = new PCB();
+    
+    DriverClass driver = new DriverClass();
+    
+    
      
-     Loader loader = new Loader();
-     loader.BeginLoad();
      
-     memory = loader.getMemory();
-     processBlock = loader.getPCB();
-        
+     
     }
 
     
