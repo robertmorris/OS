@@ -19,9 +19,16 @@ public class DriverClass {
         memory = loader.getMemory();
         pc = loader.getPCB();
         
+        CPU(pc);
         
         
      }
+
+    private void CPU(PCB pc) {
+        
+    }
+
+    
 
     
 
